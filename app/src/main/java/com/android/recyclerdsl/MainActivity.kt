@@ -45,11 +45,16 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun blueHolder(view: View, item: DummyClassOne, position: Int) {
-        view.title_tv.text = item.title
+        with(view) {
+            title_tv.text = item.title
+        }
+
     }
 
     private fun greenHolder(view: View, item: DummyClassTwo, position: Int) {
-        view.title_tv_2.text = item.title
+        with(view) {
+            title_tv_2.text = item.title
+        }
     }
 
 }

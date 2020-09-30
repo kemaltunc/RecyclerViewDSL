@@ -31,7 +31,6 @@ class CustomAdapter<T : RecyclerItem>(
     private var _position: (position: Int) -> Unit = { _ -> }
     private var _bottomDetect: () -> Unit = { }
 
-    lateinit var item: T
 
     init {
 
@@ -62,11 +61,6 @@ class CustomAdapter<T : RecyclerItem>(
 
     fun bind(f: (View, T, Int) -> Unit) {
         _onBindViewHolder = f
-    }
-
-    override fun getItem(position: Int): T {
-        item = items[position]
-        return items[position]
     }
 
     fun onItemClickListener(f: (T, Int) -> Unit) {

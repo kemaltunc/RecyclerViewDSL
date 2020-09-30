@@ -2,42 +2,78 @@ package com.android.recyclerdsl
 
 import com.android.recyclerviewdsl.src.RecyclerItem
 
-class DummyClassOne(
-    var title: String
+
+class MainModel(
+    var list: List<RecyclerItem> = emptyList(),
+    var type: PostType
 ) : RecyclerItem(R.layout.cell_item)
 
-class DummyClassTwo(
-    var title: String
-) : RecyclerItem(R.layout.cell_item_two)
 
+class Post(
+    var title: String = "post"
+) : RecyclerItem(R.layout.cell_post)
+
+class Story(
+    var title: String = "story"
+) : RecyclerItem(R.layout.cell_story)
+
+class Card(
+    var title: String = "card"
+) : RecyclerItem(R.layout.cell_card)
+
+enum class PostType {
+    STORY, CARD
+}
 
 fun getList(): List<RecyclerItem> {
+
     return listOf(
-        DummyClassOne(
-            "test1"
-        ), DummyClassOne(
-            "test2"
-        ), DummyClassOne(
-            "test3"
-        ), DummyClassTwo(
-            "test4"
-        ),
-        DummyClassTwo(
-            "test5"
-        ), DummyClassTwo(
-            "test6"
-        ), DummyClassTwo(
-            "test1"
-        ), DummyClassOne(
-            "test1"
-        ), DummyClassTwo(
-            "test6"
-        ), DummyClassTwo(
-            "test1"
-        ), DummyClassTwo(
-            "test6"
-        ), DummyClassOne(
-            "test1"
-        )
+        MainModel(getStoryList(), PostType.STORY),
+        Post(),
+        MainModel(getCardList(), PostType.CARD),
+        Post(),
+        Post(),
+        Post(),
+        Post(),
+        Post(),
+        Post()
     )
+
 }
+
+
+fun getPostList() = listOf(
+    Post(),
+    Post(),
+    Post(),
+    Post(),
+    Post()
+)
+
+
+fun getStoryList() = listOf(
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story(),
+    Story()
+)
+
+fun getCardList() = listOf(
+    Card(),
+    Card(),
+    Card(),
+    Card(),
+    Card(),
+    Card(),
+    Card(),
+    Card(),
+    Card()
+)

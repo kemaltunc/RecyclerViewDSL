@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity() {
                     return@bind
                 }
             }
+
         }
+
 
         adapter.items = getList()
     }

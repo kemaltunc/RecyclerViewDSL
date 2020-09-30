@@ -1,14 +1,18 @@
 package com.android.recyclerviewdsl.src
 
+
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.*
 import kotlin.properties.Delegates
 
+
+/**
+ * Created by Kemal Tunç on 2020-09-30
+ */
 
 class CustomAdapter<T : RecyclerItem>(
     private val recyclerView: RecyclerView,

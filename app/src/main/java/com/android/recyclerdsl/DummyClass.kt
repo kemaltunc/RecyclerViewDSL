@@ -70,10 +70,5 @@ fun getCardList() = listOf(
     Card(),
     Card(),
     Card(),
-    Card(),
-    Card(),
-    Card(),
-    Card(),
-    Card(),
     Card()
 )

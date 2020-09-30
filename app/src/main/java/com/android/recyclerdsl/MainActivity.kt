@@ -82,7 +82,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun cardHolder(view: View, items: List<RecyclerItem>) {
         val adapter = CustomAdapter.build(view.inner_rv) {
-            scrollDirection = DIRECTION.HORIZANTAL
+            scrollDirection = DIRECTION.GRID
+            column = 2
         }.apply {
             bind { view, s, i ->
                 s.cast<Card> {

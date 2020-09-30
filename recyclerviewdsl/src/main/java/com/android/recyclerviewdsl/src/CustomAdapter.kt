@@ -19,7 +19,7 @@ class CustomAdapter<T : RecyclerItem>(
         get() = recyclerView.context
 
 
-    private constructor(builder: Builder<T>) : this(
+    private constructor(builder: Builder) : this(
         builder.recyclerView,
         builder.scrollDirection,
         builder.column
@@ -30,6 +30,7 @@ class CustomAdapter<T : RecyclerItem>(
     private var _position: (position: Int) -> Unit = { _ -> }
     private var _bottomDetect: () -> Unit = { }
 
+    lateinit var item: T
 
     init {
 
@@ -62,6 +63,11 @@ class CustomAdapter<T : RecyclerItem>(
         _onBindViewHolder = f
     }
 
+    override fun getItem(position: Int): T {
+        item = items[position]
+        return items[position]
+    }
+
     fun onItemClickListener(f: (T, Int) -> Unit) {
         _onItemClickListener = f
     }
@@ -73,6 +79,8 @@ class CustomAdapter<T : RecyclerItem>(
     fun adapterPosition(f: (Int) -> Unit) {
         _position = f
     }
+
+
 
     override fun getItemViewType(position: Int): Int {
         _position(position)
@@ -86,7 +94,7 @@ class CustomAdapter<T : RecyclerItem>(
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: T) {
-            _onBindViewHolder(itemView, item)
+            _onBindViewHolder(itemView.rootView, item)
 
             itemView.setOnClickListener {
                 _onItemClickListener(item, adapterPosition)
@@ -123,20 +131,20 @@ class CustomAdapter<T : RecyclerItem>(
     }
 
     companion object {
-        inline fun <T : RecyclerItem> build(
+        inline fun build(
             recyclerView: RecyclerView,
-            block: Builder<T>.() -> Unit
-        ) = Builder<T>(recyclerView).apply(block).build()
+            block: Builder.() -> Unit
+        ) = Builder(recyclerView).apply(block).build()
 
     }
 
-    class Builder<T : RecyclerItem>(
+    class Builder(
         val recyclerView: RecyclerView
     ) {
         var scrollDirection: DIRECTION = DIRECTION.VERTICAL
         var column = 1
 
-        fun build() = CustomAdapter(this)
+        fun build() = CustomAdapter<RecyclerItem>(this)
     }
 }
 

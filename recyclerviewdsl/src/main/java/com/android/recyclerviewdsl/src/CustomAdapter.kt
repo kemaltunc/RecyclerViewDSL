@@ -2,6 +2,7 @@ package com.android.recyclerviewdsl.src
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class CustomAdapter<T : RecyclerItem>(
         builder.column
     )
 
-    private var _onBindViewHolder: (view: View, item: T) -> Unit = { _, _ -> }
+    private var _onBindViewHolder: (view: View, item: T, position: Int) -> Unit = { _, _, _ -> }
     private var _onItemClickListener: (item: T, position: Int) -> Unit = { _, _ -> }
     private var _position: (position: Int) -> Unit = { _ -> }
     private var _bottomDetect: () -> Unit = { }
@@ -59,7 +60,7 @@ class CustomAdapter<T : RecyclerItem>(
     }
 
 
-    fun bind(f: (View, T) -> Unit) {
+    fun bind(f: (View, T, Int) -> Unit) {
         _onBindViewHolder = f
     }
 
@@ -81,7 +82,6 @@ class CustomAdapter<T : RecyclerItem>(
     }
 
 
-
     override fun getItemViewType(position: Int): Int {
         _position(position)
         return items[position].resId
@@ -90,12 +90,11 @@ class CustomAdapter<T : RecyclerItem>(
     class DataClassViewHolder<T>(
         itemView: View,
         private val _onItemClickListener: (item: T, position: Int) -> Unit,
-        private val _onBindViewHolder: (view: View, item: T) -> Unit
+        private val _onBindViewHolder: (view: View, item: T, position: Int) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: T) {
-            _onBindViewHolder(itemView.rootView, item)
-
+            _onBindViewHolder(itemView.rootView, item, adapterPosition)
             itemView.setOnClickListener {
                 _onItemClickListener(item, adapterPosition)
             }

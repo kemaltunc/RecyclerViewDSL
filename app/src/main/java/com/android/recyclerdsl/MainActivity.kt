@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-
-
         }
 
         adapter.items = getList()
@@ -69,14 +67,9 @@ class MainActivity : AppCompatActivity() {
         }.apply {
 
             bind { itemView, item, adapterPosition ->
-                item.cast<Story> {
+                item.cast<Story> { story ->
                     with(itemView) {
-
-                        storyTitle.text = it.title
-
-                        setOnClickListener {
-
-                        }
+                        storyTitle.text = story.title
                     }
                 }
             }

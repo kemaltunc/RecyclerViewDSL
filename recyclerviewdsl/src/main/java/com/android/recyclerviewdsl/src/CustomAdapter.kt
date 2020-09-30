@@ -51,8 +51,10 @@ class CustomAdapter<T : RecyclerItem>(
         }
 
         recyclerView.apply {
-            layoutManager = mLayoutManager
-            adapter = this@CustomAdapter
+            if (adapter == null) {
+                layoutManager = mLayoutManager
+                adapter = this@CustomAdapter
+            }
         }
 
     }
@@ -67,9 +69,9 @@ class CustomAdapter<T : RecyclerItem>(
         _onBindViewHolder = f
     }
 
-    fun onItemClickListener(f: (T, Int) -> Unit) {
+  /*  fun onItemClickListener(f: (item: T, adapterPosition: Int) -> Unit) {
         _onItemClickListener = f
-    }
+    }*/
 
     fun bottomDetect(f: () -> Unit) {
         _bottomDetect = f
@@ -92,10 +94,10 @@ class CustomAdapter<T : RecyclerItem>(
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: T) {
-            _onBindViewHolder(itemView.rootView, item, adapterPosition)
-            itemView.setOnClickListener {
+            _onBindViewHolder(itemView, item, adapterPosition)
+         /*   itemView.setOnClickListener {
                 _onItemClickListener(item, adapterPosition)
-            }
+            }*/
         }
 
     }

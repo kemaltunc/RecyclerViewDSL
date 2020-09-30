@@ -29,19 +29,20 @@ class MainActivity : AppCompatActivity() {
              * @param s; item
              * @param i; adapterPosition
              * */
-            bind { view, s, i ->
+            bind { itemView, item, adapterPosition ->
 
-                s.cast<MainModel> {
-                    mainHolder(view, it)
+                item.cast<MainModel> {
+                    mainHolder(itemView, it)
                     return@bind
                 }
 
-                s.cast<Post> {
-                    postHolder(view, it, i)
+                item.cast<Post> {
+                    postHolder(itemView, it, adapterPosition)
                     return@bind
                 }
 
             }
+
 
         }
 
@@ -70,9 +71,10 @@ class MainActivity : AppCompatActivity() {
         val adapter = CustomAdapter.build(view.inner_rv) {
             scrollDirection = DIRECTION.HORIZANTAL
         }.apply {
-            bind { view, s, i ->
-                s.cast<Story> {
-                    with(view) {
+
+            bind { itemView, item, adapterPosition ->
+                item.cast<Story> {
+                    with(itemView) {
 
                         storyTitle.text = it.title
 
@@ -92,9 +94,10 @@ class MainActivity : AppCompatActivity() {
             scrollDirection = DIRECTION.GRID
             column = 2
         }.apply {
-            bind { view, s, i ->
-                s.cast<Card> {
-                    with(view) {
+
+            bind { itemView, item, adapterPosition ->
+                item.cast<Card> {
+                    with(itemView) {
                         cardTitle.text = it.title
                     }
                 }

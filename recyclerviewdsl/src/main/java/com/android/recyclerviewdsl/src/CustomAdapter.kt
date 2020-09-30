@@ -63,7 +63,7 @@ class CustomAdapter<T : RecyclerItem>(
     }
 
 
-    fun bind(f: (View, T, Int) -> Unit) {
+    fun bind(f: (itemView: View, item: T, adapterPosition: Int) -> Unit) {
         _onBindViewHolder = f
     }
 

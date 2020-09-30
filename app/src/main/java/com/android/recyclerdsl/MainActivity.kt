@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = CustomAdapter.build(recyclerview) {
             scrollDirection = DIRECTION.VERTICAL
         }.apply {
+            /***
+             * @param view; itemView
+             * @param s; item
+             * @param i; adapterPosition
+             * */
             bind { view, s, i ->
 
                 s.cast<DummyClassOne>()?.let {

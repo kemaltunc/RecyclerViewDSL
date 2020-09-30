@@ -40,10 +40,10 @@ class CustomAdapter<T : RecyclerItem>(
 
         val mLayoutManager = when (scrollDirection) {
             DIRECTION.VERTICAL -> {
-                LinearLayoutManager(context)
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }
             DIRECTION.HORIZANTAL -> {
-                LinearLayoutManager(context)
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             }
             DIRECTION.GRID -> {
                 GridLayoutManager(context, column)

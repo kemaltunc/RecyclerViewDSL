@@ -72,7 +72,14 @@ class MainActivity : AppCompatActivity() {
         }.apply {
             bind { view, s, i ->
                 s.cast<Story> {
-                    view.storyTitle.text = it.title
+                    with(view) {
+
+                        storyTitle.text = it.title
+
+                        setOnClickListener {
+
+                        }
+                    }
                 }
             }
         }
@@ -87,7 +94,9 @@ class MainActivity : AppCompatActivity() {
         }.apply {
             bind { view, s, i ->
                 s.cast<Card> {
-                    view.cardTitle.text = it.title
+                    with(view) {
+                        cardTitle.text = it.title
+                    }
                 }
             }
         }

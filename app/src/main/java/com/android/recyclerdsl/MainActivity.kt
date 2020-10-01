@@ -72,9 +72,10 @@ class MainActivity : AppCompatActivity() {
                     storyTitle.text = item.title
                 }
             }
+
+            this.items = items
         }
 
-        adapter.items = items
     }
 
     private fun cardHolder(view: View, items: List<Card>) {
@@ -92,9 +93,8 @@ class MainActivity : AppCompatActivity() {
 
             }
 
+            this.items = items
         }
-
-        adapter.items = items
     }
 
 }

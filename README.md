@@ -7,6 +7,14 @@ class Story(
     var title: String = "story"
 ) : RecyclerItem(R.layout.cell_story)
 
+<h6>List</h6>
+  val stories = listOf(
+                Story(),
+                Story(),
+                Story()
+            )
+
+
 <h6>Sample Code</h6>
 
     val adapter = CustomAdapter.build<Story>(story_rv) {
@@ -22,5 +30,5 @@ class Story(
 
             }
 
-            this.items = items
+            this.items = stories
         }

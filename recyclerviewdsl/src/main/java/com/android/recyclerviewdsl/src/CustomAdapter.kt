@@ -143,7 +143,7 @@ class CustomAdapter<T : RecyclerItem>(
         var scrollDirection: DIRECTION = DIRECTION.VERTICAL
         var column = 1
 
-        fun build() = CustomAdapter<T>(this)
+        fun build() = CustomAdapter(this)
     }
 }
 

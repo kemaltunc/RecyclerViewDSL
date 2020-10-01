@@ -32,3 +32,18 @@ class Story(
 
             this.items = stories
         }
+    
+<h2>Add RecyclerviewDSL to your project</h2>
+        <h6>Via Gradle</h6>
+        
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+    implementation 'com.github.kemaltunc:RecyclerViewDSL:1.1.0'    
+       
+
+        

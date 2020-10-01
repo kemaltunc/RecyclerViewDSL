@@ -24,7 +24,7 @@ class CustomAdapter<T : RecyclerItem>(
         get() = recyclerView.context
 
 
-    private constructor(builder: Builder) : this(
+    private constructor(builder: Builder<T>) : this(
         builder.recyclerView,
         builder.scrollDirection,
         builder.column
@@ -69,9 +69,9 @@ class CustomAdapter<T : RecyclerItem>(
         _onBindViewHolder = f
     }
 
-  /*  fun onItemClickListener(f: (item: T, adapterPosition: Int) -> Unit) {
+    fun onItemClickListener(f: (item: T, adapterPosition: Int) -> Unit) {
         _onItemClickListener = f
-    }*/
+    }
 
     fun bottomDetect(f: () -> Unit) {
         _bottomDetect = f
@@ -95,9 +95,9 @@ class CustomAdapter<T : RecyclerItem>(
 
         fun bind(item: T) {
             _onBindViewHolder(itemView, item, adapterPosition)
-         /*   itemView.setOnClickListener {
+            itemView.setOnClickListener {
                 _onItemClickListener(item, adapterPosition)
-            }*/
+            }
         }
 
     }
@@ -130,20 +130,20 @@ class CustomAdapter<T : RecyclerItem>(
     }
 
     companion object {
-        inline fun build(
+        inline fun <T : RecyclerItem> build(
             recyclerView: RecyclerView,
-            block: Builder.() -> Unit
-        ) = Builder(recyclerView).apply(block).build()
+            block: Builder<T>.() -> Unit
+        ) = Builder<T>(recyclerView).apply(block).build()
 
     }
 
-    class Builder(
+    class Builder<T : RecyclerItem>(
         val recyclerView: RecyclerView
     ) {
         var scrollDirection: DIRECTION = DIRECTION.VERTICAL
         var column = 1
 
-        fun build() = CustomAdapter<RecyclerItem>(this)
+        fun build() = CustomAdapter<T>(this)
     }
 }
 

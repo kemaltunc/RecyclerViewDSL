@@ -9,3 +9,10 @@ inline fun <reified T> RecyclerItem.cast(item: (item: T) -> Unit) {
         item(this)
     }
 }
+
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : Any> List<*>.cast() =
+    if (all { it is T })
+        this as List<T>
+    else emptyList()

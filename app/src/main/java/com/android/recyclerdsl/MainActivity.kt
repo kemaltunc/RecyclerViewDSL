@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val adapter = CustomAdapter.build(recyclerview) {
+        val adapter = CustomAdapter.build<RecyclerItem>(recyclerview) {
             scrollDirection = DIRECTION.VERTICAL
         }.apply {
 
@@ -47,13 +47,14 @@ class MainActivity : AppCompatActivity() {
     private fun mainHolder(view: View, item: MainModel) {
         when (item.type) {
             PostType.STORY -> {
-                storyHolder(view, item.list)
+                storyHolder(view, item.list.cast())
             }
             PostType.CARD -> {
-                cardHolder(view, item.list)
+                cardHolder(view, item.list.cast())
             }
         }
     }
+
 
     private fun postHolder(view: View, item: Post, position: Int) {
         with(view) {
@@ -61,16 +62,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun storyHolder(view: View, items: List<RecyclerItem>) {
-        val adapter = CustomAdapter.build(view.inner_rv) {
+    private fun storyHolder(view: View, items: List<Story>) {
+        val adapter = CustomAdapter.build<Story>(view.inner_rv) {
             scrollDirection = DIRECTION.HORIZANTAL
         }.apply {
 
             bind { itemView, item, adapterPosition ->
-                item.cast<Story> { story ->
-                    with(itemView) {
-                        storyTitle.text = story.title
-                    }
+                with(itemView) {
+                    storyTitle.text = item.title
                 }
             }
         }
@@ -78,19 +77,21 @@ class MainActivity : AppCompatActivity() {
         adapter.items = items
     }
 
-    private fun cardHolder(view: View, items: List<RecyclerItem>) {
-        val adapter = CustomAdapter.build(view.inner_rv) {
+    private fun cardHolder(view: View, items: List<Card>) {
+        val adapter = CustomAdapter.build<Card>(view.inner_rv) {
             scrollDirection = DIRECTION.GRID
             column = 2
         }.apply {
 
             bind { itemView, item, adapterPosition ->
-                item.cast<Card> {
-                    with(itemView) {
-                        cardTitle.text = it.title
-                    }
+                with(itemView) {
+                    cardTitle.text = item.title
                 }
             }
+            onItemClickListener { item, adapterPosition ->
+
+            }
+
         }
 
         adapter.items = items

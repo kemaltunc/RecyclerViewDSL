@@ -9,7 +9,7 @@ class Story(
 
 <h6>Sample Code</h6>
 
-    val adapter = CustomAdapter.build<Story>(view.inner_rv) {
+    val adapter = CustomAdapter.build<Story>(story_rv) {
             scrollDirection = DIRECTION.HORIZANTAL
         }.apply {
 

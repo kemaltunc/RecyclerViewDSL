@@ -6,6 +6,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Keep
 import androidx.recyclerview.widget.*
 import kotlin.properties.Delegates
 
@@ -13,7 +14,7 @@ import kotlin.properties.Delegates
 /**
  * Created by Kemal Tunç on 2020-09-30
  */
-
+@Keep
 class CustomAdapter<T : RecyclerItem>(
     private val recyclerView: RecyclerView,
     scrollDirection: DIRECTION,

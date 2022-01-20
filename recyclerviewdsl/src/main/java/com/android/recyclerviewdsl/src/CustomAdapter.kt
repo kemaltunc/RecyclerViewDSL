@@ -14,7 +14,6 @@ import kotlin.properties.Delegates
 /**
  * Created by Kemal Tunç on 2020-09-30
  */
-@Keep
 class CustomAdapter<T : RecyclerItem>(
     private val recyclerView: RecyclerView,
     scrollDirection: DIRECTION,

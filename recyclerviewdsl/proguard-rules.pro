@@ -19,8 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
--keep class kotlin.Metadata { *; }
-
--keep public class  com.android.recyclerviewdsl.src.CustomAdapter
--keep public class  com.android.recyclerviewdsl.src.RecyclerItem

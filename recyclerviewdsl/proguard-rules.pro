@@ -28,6 +28,8 @@
     public static ** Companion;
 }
 
+-keep class com.android.recyclerviewdsl.src.CustomAdapter$Companion { *; }
+
 
 -keep @interface kotlin.Metadata {
   *;

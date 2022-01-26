@@ -23,7 +23,7 @@
 
 
 
--keep,allowshrinking class com.android.recyclerviewdsl.src.CustomAdapter {
+-keep public class com.android.recyclerviewdsl.src.CustomAdapter {
     public <methods>;
     protected <methods>;
     public static <methods>;

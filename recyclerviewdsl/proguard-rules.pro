@@ -23,10 +23,8 @@
 
 
 
--keep public class com.android.recyclerviewdsl.src.CustomAdapter {
-    public <methods>;
-    protected <methods>;
-    public static <methods>;
-    public <init>(...);
-    public static ** Companion;
-}
+
+
+-keepnames class com.android.recyclerviewdsl.src.CustomAdapter.** { *; }
+-keep class kotlin.Metadata { *; }
+-keep class kotlin.reflect.jvm.internal.** { *; }

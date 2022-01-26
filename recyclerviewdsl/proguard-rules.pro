@@ -22,4 +22,13 @@
 
 
 
--keep public class  com.android.recyclerviewdsl.src.CustomAdapter
+-keep public class  com.android.recyclerviewdsl.src.CustomAdapter.**{
+*;
+}
+
+
+
+-keep @interface kotlin.Metadata {
+  *;
+}
+-keepattributes RuntimeVisibleAnnotations

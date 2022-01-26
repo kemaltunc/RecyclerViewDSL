@@ -129,6 +129,7 @@ class CustomAdapter<T : RecyclerItem>(
         override fun areContentsTheSame(oldItem: Data, newItem: Data) = oldItem == newItem
     }
 
+    @Keep
     companion object {
         inline fun <T : RecyclerItem> build(
             recyclerView: RecyclerView,

@@ -131,6 +131,7 @@ class CustomAdapter<T : RecyclerItem>(
 
     @Keep
     companion object {
+        @JvmStatic
         inline fun <T : RecyclerItem> build(
             recyclerView: RecyclerView,
             block: Builder<T>.() -> Unit

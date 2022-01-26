@@ -23,9 +23,10 @@
 
 
 
-
-
--keepclassmembers class com.android.recyclerviewdsl.src.CustomAdapter {
+-keep,allowshrinking class com.android.recyclerviewdsl.src.CustomAdapter {
+    public <methods>;
+    protected <methods>;
+    public static <methods>;
+    public <init>(...);
     public static ** Companion;
 }
-

@@ -14,6 +14,7 @@ import kotlin.properties.Delegates
 /**
  * Created by Kemal Tunç on 2020-09-30
  */
+
 class CustomAdapter<T : RecyclerItem>(
     private val recyclerView: RecyclerView,
     scrollDirection: DIRECTION,
@@ -137,6 +138,11 @@ class CustomAdapter<T : RecyclerItem>(
             block: Builder<T>.() -> Unit
         ) = Builder<T>(recyclerView).apply(block).build()
 
+        @Keep
+        @JvmStatic
+        fun denemeStart(): String {
+            return "aaaaa"
+        }
     }
 
     class Builder<T : RecyclerItem>(

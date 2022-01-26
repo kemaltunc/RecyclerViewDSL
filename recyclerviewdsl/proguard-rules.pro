@@ -22,11 +22,10 @@
 
 
 
--keep public class  com.android.recyclerviewdsl.src.CustomAdapter
+
 
 
 -keepclassmembers class com.android.recyclerviewdsl.src.CustomAdapter {
     public static ** Companion;
 }
 
--keep class com.android.recyclerviewdsl.src.CustomAdapter$Companion { *; }

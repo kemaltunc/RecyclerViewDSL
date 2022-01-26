@@ -21,4 +21,3 @@
 #-renamesourcefileattribute SourceFile
 
 
--keep public class  com.android.recyclerviewdsl.src.CustomAdapter

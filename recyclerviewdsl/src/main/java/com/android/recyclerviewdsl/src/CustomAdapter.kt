@@ -130,7 +130,7 @@ class CustomAdapter<T : RecyclerItem>(
         override fun areContentsTheSame(oldItem: Data, newItem: Data) = oldItem == newItem
     }
 
-    @Keep
+
     companion object {
         @JvmStatic
         inline fun <T : RecyclerItem> build(
@@ -138,7 +138,7 @@ class CustomAdapter<T : RecyclerItem>(
             block: Builder<T>.() -> Unit
         ) = Builder<T>(recyclerView).apply(block).build()
 
-        @Keep
+
         @JvmStatic
         fun denemeStart(): String {
             return "aaaaa"

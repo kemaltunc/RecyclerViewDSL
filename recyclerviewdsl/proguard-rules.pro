@@ -22,10 +22,11 @@
 
 
 
--keep public class  com.android.recyclerviewdsl.src.CustomAdapter.**{
-*;
-}
+-keep public class  com.android.recyclerviewdsl.src.CustomAdapter
 
+-keepclassmembers class com.android.recyclerviewdsl.src.CustomAdapter {
+    public static ** Companion;
+}
 
 
 -keep @interface kotlin.Metadata {

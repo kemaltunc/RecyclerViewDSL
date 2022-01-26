@@ -26,3 +26,5 @@
 
 
 -keep class com.android.recyclerviewdsl.src.CustomAdapter
+
+-keep class com.android.recyclerviewdsl.src.Deneme

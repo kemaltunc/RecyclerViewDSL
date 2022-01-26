@@ -15,6 +15,7 @@ import kotlin.properties.Delegates
  * Created by Kemal Tunç on 2020-09-30
  */
 
+@Keep
 class CustomAdapter<T : RecyclerItem>(
     private val recyclerView: RecyclerView,
     scrollDirection: DIRECTION,
@@ -130,9 +131,10 @@ class CustomAdapter<T : RecyclerItem>(
         override fun areContentsTheSame(oldItem: Data, newItem: Data) = oldItem == newItem
     }
 
-
+    @Keep
     companion object {
         @JvmStatic
+        @Keep
         inline fun <T : RecyclerItem> build(
             recyclerView: RecyclerView,
             block: Builder<T>.() -> Unit
@@ -140,6 +142,7 @@ class CustomAdapter<T : RecyclerItem>(
 
 
         @JvmStatic
+        @Keep
         fun denemeStart(): String {
             return "aaaaa"
         }

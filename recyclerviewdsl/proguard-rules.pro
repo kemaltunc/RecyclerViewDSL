@@ -25,6 +25,4 @@
 
 
 
--keepnames class com.android.recyclerviewdsl.src.CustomAdapter.** { *; }
--keep class kotlin.Metadata { *; }
--keep class kotlin.reflect.jvm.internal.** { *; }
+-keep class com.android.recyclerviewdsl.src.CustomAdapter

@@ -25,8 +25,8 @@
 -keep public class  com.android.recyclerviewdsl.src.CustomAdapter
 
 
-
--keep @interface kotlin.Metadata {
-  *;
+-keepclassmembers class com.android.recyclerviewdsl.src.CustomAdapter {
+    public static ** Companion;
 }
--keepattributes RuntimeVisibleAnnotations
+
+-keep class com.android.recyclerviewdsl.src.CustomAdapter$Companion { *; }
